@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Шаблон HTML-страницы с подключенными React-библиотеками</title>
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+</head>
+<body>
+  <div id="content"></div>
+  <script type="text/babel">
+    var HelloWorld = React.createClass({
+      render: function() {
+        return <h1>My name is {this.props.name} and I love {this.props.action}.</h1>;
+      }
+    });
+    ReactDOM.render (
+      <div>
+        <HelloWorld name="Oleg" action="coding" />
+        <HelloWorld name="Jane" action="coffee" />
+        <HelloWorld name="Jack" action="jumping" />
+      </div>,
+      document.getElementById("content")
+    );
+  </script>
+</body>
+</html>
