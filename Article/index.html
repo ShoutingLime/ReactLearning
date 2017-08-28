@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Article</title>
+  <script src="lib/react.min.js"></script>
+  <script src="lib/react-dom.min.js"></script>
+  <script src="lib/browser.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="fonts/RobotoRegular.woff">
+</head>
+<body class="page">
+  <h1>ARTICLES</h1>
+  <hr color="#777">
+  <div id="content"><hr></div>
+  <script type="text/babel">
+    var ARTICLES = [
+      {
+        id: 1,
+        title: 'Frameworks and places',
+        author: 'Christian Stann',
+        image: 'img/img_01.png',
+        body: 'Equally, the framework and place of training of personnel entails the process of introducing and modernizing the appropriate conditions for revitalization. Dear friends, the new model of organizational activity helps to increase the relevance of areas of progressive development? Equally, raising the level of civic consciousness entails the process of introducing and modernizing a system of large-scale change of a number of parameters. Diverse and rich experience, a new model of organizational activity provides a wide range of specialists with participation in the formation of a system of training of personnel corresponding to urgent needs. We should not, however, forget that the implementation of the planned development plan allows us to assess the significance of the scale-up system of a number of parameters! The task of the organization, especially the new model of organizational activity, entails the process of introducing and modernizing the economic feasibility of the decisions made.'
+      }, {
+        id: 2,
+        title: 'Diverse and experience',
+        author: 'Jeremy Faust',
+        image: 'img/img_02.png',
+        body: 'Diverse and rich experience, a new model of organizational activity provides a wide range of specialists with participation in the formation of a system of training of personnel corresponding to urgent needs. We should not, however, forget that the implementation of the planned development plan allows us to assess the significance of the scale-up system of a number of parameters! The task of the organization, especially the new model of organizational activity, entails the process of introducing and modernizing the economic feasibility of the decisions made. Equally, the framework and place of training of personnel entails the process of introducing and modernizing the appropriate conditions for revitalization. Dear friends, the new model of organizational activity helps to increase the relevance of areas of progressive development? Equally, raising the level of civic consciousness entails the process of introducing and modernizing a system of large-scale change of a number of parameters.'
+      }
+    ];
+
+    var Article = React.createClass({
+      render: function() {
+        return (
+          <li className="article clearfix">
+            <h2 className="title">{this.props.title}</h2>
+            <p className="author">{this.props.author}</p>
+            <img className="pic" src={this.props.image} width="120px" height="80px" />
+            <div className="body">{this.props.body}</div>
+          </li>
+        );
+      }
+    });
+
+    var ArticlesList = React.createClass({
+      render: function() {
+        return (
+          <div>
+            <ul>
+              {
+                ARTICLES.map(function(el) {
+                return <Article 
+                  key={el.id}
+                  title={el.title}
+                  author={el.author}
+                  image={el.image}
+                  body={el.body}
+                  />;
+                })
+              }
+            </ul>
+          </div>
+        );
+      }
+    });
+
+    ReactDOM.render(
+      <ArticlesList />,
+      document.getElementById("content")
+    );
+  </script>
+</body>
+</html>
