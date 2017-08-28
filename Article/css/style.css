@@ -1,0 +1,37 @@
+* {
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.page {
+  width: 1280px;
+  margin: auto;
+  background-color: #ddc8c4;
+}
+
+.article {
+  list-style: none;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #777;
+}
+
+.pic {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.clearfix {
+  display: table;
+  clear: both;
+}
+
+.author {
+  font-style: italic;
+  color: #777;
+}
+
+.title {
+  letter-spacing: 1.5px;
+}
