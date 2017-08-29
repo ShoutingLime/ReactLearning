@@ -1,0 +1,36 @@
+* {
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  width: 1280px;
+  margin: auto;
+  background-color: #c7d3bf;
+}
+
+.fieldInput {
+  margin: auto;
+  margin-top: 50px;
+}
+
+.inputText {
+  font-size: 24px;
+}
+
+.inputBox {
+  width: 400px;
+  height: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 24px;
+  color: #aaa;
+}
+
+.output {
+  color: #777;
+  font-size: 36px;
+  text-align: center;
+  font-weight: 900;
+}
