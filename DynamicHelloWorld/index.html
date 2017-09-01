@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Hello World</title>
+  <script src="lib/react.min.js"></script>
+  <script src="lib/react-dom.min.js"></script>
+  <script src="lib/browser.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="fonts/RobotoRegular.woff">
+</head>
+
+<body class="page">
+  <div id='content'></div>
+  <script type="text/babel">
+    var FieldInput = React.createClass({
+      render() {
+        return (
+          <form className="fieldInput" method="get">
+            <span className="inputText">Enter your name, please: </span>
+            <input className="inputBox" type="text" name="username" onChange={this.handleNameChange} />
+            <p className="output">Hello, {this.state.name}!</p>
+          </form>
+        );
+      },
+
+      getInitialState: function() {
+        return {
+          name: "stranger"
+        };
+      },
+
+      handleNameChange(event) {
+        this.setState({
+          name: event.target.value
+        });
+      }
+    });
+
+    ReactDOM.render(
+      <FieldInput />,
+      document.getElementById("content")
+    );
+  </script>
+</body>
+</html>
