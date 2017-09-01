@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enhanced contact list</title>
+  <script src="lib/react.min.js"></script>
+  <script src="lib/react-dom.min.js"></script>
+  <script src="lib/browser.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <div id='content'></div>
+  <script type="text/babel">
+    var CONTACTS = [
+      {
+        id: 1,
+        name: 'Tikhon',
+        phoneNumber: '+250966666666',
+        image: 'img/ivanov.jpg',
+        address: 'App. 1, 1st Road',
+        email: '123@321.com'
+      }, {
+        id: 2,
+        name: 'Leonid',
+        phoneNumber: '+250966344466',
+        image: 'img/petrov.jpg',
+        address: 'App. 2, 2nd Road',
+        email: '234@432.com'
+      }, {
+        id: 3,
+        name: 'Tuffon',
+        phoneNumber: '+250976654433',
+        image: 'img/sidorov.jpg',
+        address: 'App. 3, 3rd Road',
+        email: '345@543.com'
+      }, {
+        id: 4,
+        name: 'Lev',
+        phoneNumber: '+250456784935',
+        image: 'img/kuznetsov.jpg',
+        address: 'App. 4, 4th Road',
+        email: '456@654.com'
+      }
+    ];
+
+    var Contact = React.createClass({
+
+      getInitialState: function() {
+        return (
+          <li className="contact" onClick={this.isOpened}>
+            <img className="contact-image" src={this.props.image} width="60px" height="60px" />
+            <div className="contact-info">
+              <div className="contact-name"> {this.props.name} </div>
+              <div className="contact-number"> {this.props.phoneNumber} </div>
+            </div>
+          </li>
+        );
+      },
+
+      isOpened: function(event) {
+        this.setState(
+          <li className="contact" onClick={this.isOpened}>
+            <img className="contact-image" src={this.props.image} width="60px" height="60px" />
+            <div className="contact-info">
+              <div className="contact-name"> {this.props.name} </div>
+              <div className="contact-number"> {this.props.phoneNumber} </div>
+              <div className="contact-address"> {this.props.address} </div>
+              <div className="contact-email"> {this.props.email} </div>
+           </div>
+          </li>
+        );
+      },
+
+      render: function() {
+        if(this.state.isOpened == false || this.state.isOpened == undefined) {
+          this.state.isOpened = true;
+          return (<div className="contactNonSelected">{this.getInitialState()}</div>);
+        };
+
+        if(this.state.isOpened == true) {
+          this.state.isOpened = false;
+          return (<div className="contactSelected">{this.state}</div>);
+        };
+      }
+    });
+
+    var ContactsList = React.createClass({
+      getInitialState: function() {
+        return {
+          displayedContacts: CONTACTS
+        };
+      },
+      handleSearch: function(event) {
+        var searchQuery = event.target.value.toLowerCase();
+        var displayedContacts = CONTACTS.filter(function(el) {
+          var searchValue = el.name.toLowerCase();
+          return searchValue.indexOf(searchQuery) !== -1;
+        });
+        this.setState({
+          displayedContacts: displayedContacts
+        });
+      },
+      render: function() {
+        return (
+          <div className="contacts">
+            <input type="text" className="search-field" onChange={this.handleSearch} />
+            <ul className="contacts-list">
+              {
+                this.state.displayedContacts.map(function(el) {
+                  return <Contact
+                    key={el.id}
+                    name={el.name}
+                    phoneNumber={el.phoneNumber}
+                    image={el.image}
+                    address={el.address}
+                    email={el.email}
+                  />;
+                })
+              }
+            </ul>
+          </div>
+        );
+      }
+    });
+    ReactDOM.render(
+      <ContactsList />,
+      document.getElementById("content")
+    );
+  </script>
+</body>
+</html>
