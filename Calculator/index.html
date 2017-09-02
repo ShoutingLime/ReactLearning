@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  <script src="lib/react.min.js"></script>
+  <script src="lib/react-dom.min.js"></script>
+  <script src="lib/browser.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="fonts/RobotoRegular.woff">
+</head>
+<body class="page">
+  <div id='content'></div>
+  <script type="text/babel">
+    var Calculator = React.createClass({
+      render() {
+        return (
+          <form className="calc" method="get">
+            <div className="numbers">
+              <div className="firstNumber">
+                <div className="inputText">Enter 1st number: </div>
+                <input className="inputBox" type="text" name="firstNumber" value={this.state.firstNumber} placeholder="0" onChange={this.handleNumberEnter1} />
+              </div>
+              <div className="secondNumber">
+                <div className="inputText">Enter 2nd number: </div>
+                <input className="inputBox" type="text" name="secondNumber" value={this.state.secondNumber} placeholder="0" onChange={this.handleNumberEnter2} />
+              </div>
+            </div>
+            <div className="operators">
+              <div className="operatorInputText">Choose operator: </div>
+              <div className="operatorButtons">
+                <div className="operatorSum" onClick={this.sum}>+</div>
+                <div className="operatorSubtraction" onClick={this.subtraction}>–</div>
+                <div className="operatorMultiplication" onClick={this.multiplication}>*</div>
+                <div className="operatorDivision" onClick={this.division}>/</div>
+              </div>
+            </div>
+            <div className="resultBlock">
+              <span className="outputText">The result is: </span>
+              <span className="result">{this.state.result}</span>
+            </div>
+            <div className="reset" onClick={this.reset}>Reset</div>
+          </form>
+        );
+      },
+
+      getInitialState: function() {
+        return {
+          firstNumber: null,
+          secondNumber: null,
+          result: 0
+        };
+      },
+
+      reset(event) {
+        this.setState({
+          firstNumber: "",
+          secondNumber: "",
+          result: 0
+        });
+      },
+
+      handleNumberEnter1(event) {
+        this.setState({
+          firstNumber: event.target.value
+        });
+      },
+
+      handleNumberEnter2(event) {
+        this.setState({
+          secondNumber: event.target.value
+        });
+      },
+
+      sum(event) {
+        this.setState({
+          result: +this.state.firstNumber + +this.state.secondNumber
+        });
+      },
+
+      subtraction(event) {
+        this.setState({
+          result: +this.state.firstNumber - +this.state.secondNumber
+        });
+      },
+
+      multiplication(event) {
+        this.setState({
+          result: +this.state.firstNumber * +this.state.secondNumber
+        });
+      },
+
+      division(event) {
+        this.setState({
+          result: +this.state.firstNumber / +this.state.secondNumber
+        });
+      }
+    });
+
+    ReactDOM.render(
+      <Calculator />,
+      document.getElementById("content")
+    );
+  </script>
+</body>
+</html>

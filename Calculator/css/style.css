@@ -1,0 +1,121 @@
+.page {
+  margin: auto;
+  background-color: #f0f7f4;
+  font-family: Roboto, Arial, san-serif;
+}
+
+.calc {
+  width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 10px;
+  background-color: #b3bfb8;
+}
+
+.numbers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.firstNumber,
+.secondNumber {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputBox {
+  width: 100px;
+  height: 30px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.operatorInputText {
+  text-align: center;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.operatorButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.operatorSum,
+.operatorSubtraction,
+.operatorMultiplication,
+.operatorDivision {
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #000;
+  border-radius: 3px;
+  background-color: #a2e3c4;
+  text-align: center;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.operatorSum:hover,
+.operatorSubtraction:hover,
+.operatorMultiplication:hover,
+.operatorDivision:hover {
+  background-color: tomato;
+}
+
+.operatorSum {
+  padding-top: 8px;
+}
+
+.operatorSubtraction {
+  padding-top: 7px;
+}
+
+.operatorMultiplication {
+  padding-top: 11px;
+}
+
+.operatorDivision {
+  padding-top: 7px;
+}
+
+.resultBlock {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.result {
+  font-weight: 900;
+}
+
+.reset {
+  width: 60px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #000;
+  border-radius: 3px;
+  background-color: #3c493f;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  padding-top: 7px;
+  transition: all 0.5s ease;
+}
+
+.reset:hover {
+  background-color: #fff;
+  color: #3c493f;
+}
